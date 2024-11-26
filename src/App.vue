@@ -1,16 +1,25 @@
 <template>
-  <div class="test">
-    <h2>App Root Vue</h2>
+  <div class="test" >
+    <RouterView style="height: 1200px;">
+
+    </RouterView>
+
+    <!-- <el-plus>
+      <Edit></Edit>
+    </el-plus> -->
+
   </div>
 </template>
+
 <script setup lang="ts" name="Name">
-import {ref,reactive} from "vue"
-
-let sum = ref(12)
-
-console.log(sum.value);
 
 </script>
-<style lang="css" scoped>
 
+<style lang="scss">
+@import "./styles/index.scss";
+// div{
+//   h1{
+//     color: $base-color;
+//   }
+// }
 </style>
