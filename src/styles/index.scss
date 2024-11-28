@@ -1,6 +1,10 @@
 // 引入清除默认样式
-@import './reset.scss';
-@import './variable.scss';
+// @import './reset.scss';
+// @import './variable.scss';
+
+
+@use './reset.scss';
+// @use './variable.scss';
 
 $color:red;
 

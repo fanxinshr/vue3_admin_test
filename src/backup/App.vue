@@ -121,10 +121,10 @@
 
 
 <style lang="scss" scoped>
-@import "./styles/index.scss";
-div{
-  h1{
-    color: $base-color;
-  }
-}
+// @import "./styles/index.scss";
+// div{
+//   h1{
+//     color: $base-color;
+//   }
+// }
 </style>

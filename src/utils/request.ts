@@ -39,7 +39,8 @@ request.interceptors.response.use((response)=>{
     // 失败的回调，一般处理http网络错误
     // 定义一个变量，存储网络错误信息
     let message = '';
-    let status = error.response.status;
+    // let status = error.response.status;
+    let status = error.code;
     switch(status){
         case 401:
             message="token过期"

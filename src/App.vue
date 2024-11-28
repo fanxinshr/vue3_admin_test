@@ -16,7 +16,8 @@
 </script>
 
 <style lang="scss">
-@import "./styles/index.scss";
+// @import "./styles/index.scss";
+@use "./styles/index.scss" as *;
 // div{
 //   h1{
 //     color: $base-color;

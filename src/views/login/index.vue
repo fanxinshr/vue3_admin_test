@@ -158,11 +158,12 @@ const validatorPassword = (rule: any, value: any, callback: any) => {
   // validate:表单元素文本内容
   // 函数 如果符合条件callback放行通过即可
   // 如果不符合条件，callback方法会注入错误提示信息
-  if (/^\d{6,10}$/.test(value)) {
-    callback();
-  } else {
-    callback(new Error("密码长度至少6位"))
-  }
+
+  // if (/^\d{6,10}$/.test(value)) {
+  //   callback();
+  // } else {
+  //   callback(new Error("密码长度至少6位"))
+  // }
 }
 
 // 用户自定义规则
@@ -173,12 +174,12 @@ const rules = {
       // validator: validatorUsername,
     }
   ],
-  password: [
-    {
-      trigger: 'change',
-      validator: validatorPassword,
-    }
-  ]
+  // password: [
+  //   {
+  //     trigger: 'change',
+  //     validator: validatorPassword,
+  //   }
+  // ]
 }
 </script>
 

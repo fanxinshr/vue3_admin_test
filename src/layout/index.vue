@@ -84,7 +84,7 @@ let $route = useRoute()
   .layout_slider {
     // width: $base-menu-width;
     width: 260px;
-    height: 100vh;
+    height: 100%; //占满整个页面
     background-color: #262b40;
     transition: all 0.3s; //添加过渡动画
 
