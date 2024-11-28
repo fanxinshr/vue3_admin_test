@@ -8,7 +8,7 @@ import useUserStroe from '../store/modules/user';
 // 利用axios对象的create犯法，创建axios实例
 let request = axios.create({
     baseURL:import.meta.env.VITE_APP_BASE_API,
-    timeout:5000
+    timeout:10000  //超时事件设置
 })
 
 // 请求拦截器
