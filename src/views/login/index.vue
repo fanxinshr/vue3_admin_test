@@ -93,7 +93,7 @@ const login_function = async () => {
     ElNotification({
       type: 'success',
       title: `Hi, ${getTime()}`,
-      message: '欢迎登录',
+      message: `欢迎登录,${loginForm.username}`,
 
     })
   } catch (error) {
