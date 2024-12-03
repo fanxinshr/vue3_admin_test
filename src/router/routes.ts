@@ -165,6 +165,16 @@ export const constantRoute = [
                     icon:"Moon",
                 }
             },
+            {
+                path:'/product/test',
+                component:()=>import('@/views/product/test/index.vue'),
+                name:"Sku",
+                meta:{
+                    title:'test管理', //菜单标题
+                    hidden:false,
+                    icon:"Moon",
+                }
+            },
         ]
     },
     {
