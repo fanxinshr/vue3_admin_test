@@ -18,20 +18,21 @@
 </template>
 
 <script setup lang="ts" name="Breadcrumb">
-import { ref, reactive } from "vue"
-import { ArrowRight, Expand, FullScreen, Refresh, Setting, User } from "@element-plus/icons-vue";
 
+import { ArrowRight } from "@element-plus/icons-vue";
 // src\store\modules\setting.ts
-import useLayOutSettingStore from '@/store/modules/setting.ts'
+import useLayOutSettingStore from '@/store/modules/setting'
 
 // 获取layout配置相关的仓库
 let LayoutSettingStrore = useLayOutSettingStore();
 
 import { useRoute } from "vue-router";
-import { log } from "console";
 
 // 获取路由对象
 let $route = useRoute();
+
+// console.log($route);
+
 
 // 定义一个响应式数据控制图标的切换
 // 用于控制菜单折叠还是打开图标切换的变量
@@ -39,7 +40,7 @@ let $route = useRoute();
 
 // 点击图标的方法
 const changeIcon = () => {
-    console.log("123");
+    // console.log("123");
     // 图标切换
     LayoutSettingStrore.fold = !LayoutSettingStrore.fold
 }

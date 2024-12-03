@@ -16,9 +16,9 @@ let request = axios.create({
 request.interceptors.request.use((config) =>{
     // 获取用户相关的小仓库，获取仓库内部的token，登录成功之后携带给服务器
     let userStore = useUserStroe();
-    console.log("token");
+    // console.log("token");
     
-    console.log(userStore.token);
+    // console.log(userStore.token);
 
     if(userStore.token){
         config.headers.token = userStore.token

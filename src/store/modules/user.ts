@@ -4,7 +4,7 @@ import { defineStore } from "pinia";
 // 引入接口
 import { reqLogin, reqUserInfo, reqLogout } from "@/api/user";
 // 引入数据类型
-import type { loginForm } from "@/api/user/type";
+// import type { loginForm } from "@/api/user/type";
 import type { UserState } from "./types/types";
 
 // 引入操作本地存储的文件
@@ -35,12 +35,12 @@ let useUserStroe = defineStore('User', {
         // 接收用户传过来的参数
         // async userLogin(data:loginForm){
         async userLogin(data: loginFormData) {
-            console.log("calling userLogin function in user.ts store");
-            console.log("data is ", data);
+            // console.log("calling userLogin function in user.ts store");
+            // console.log("data is ", data);
             // 登录请求
             // let result:loginResponseData = await reqLogin(data);
             let result: loginResponseData = await reqLogin(data);
-            console.log("result is ", result);
+            // console.log("result is ", result);
             // 登录请求 成功200 -> token
             // 登录请求 失败201 -> 登录失败错误的信息
             if (result.code == 200) {
@@ -57,14 +57,12 @@ let useUserStroe = defineStore('User', {
 
             }
 
-
-
         },
         async userInfo() {
             // console.log(123);
             // 获取用户的信息存储到仓库之中
             let result: userInfoResponseData = await reqUserInfo()
-            console.log("result is ",result);
+            // console.log("result is ",result);
             // 如果获取用户信息成功，存储一下用户的个人信息
             if (result.code == 200) {
                 this.username = result.data.name;
@@ -93,12 +91,6 @@ let useUserStroe = defineStore('User', {
             } else {
                 return Promise.reject(new Error(result.messages));
             }
-
-
-
-
-
-
 
         }
 

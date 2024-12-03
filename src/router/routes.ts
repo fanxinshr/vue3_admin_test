@@ -21,7 +21,7 @@ export const constantRoute = [
         meta:{
             title:'', //菜单标题
             hidden:true, //代表路由标题在菜单中是否隐藏
-            icon:"",
+            icon:"Notification",
         },
         redirect: "/home",
         children:[
@@ -170,7 +170,7 @@ export const constantRoute = [
                 component:()=>import('@/views/product/test/index.vue'),
                 name:"Sku",
                 meta:{
-                    title:'test管理', //菜单标题
+                    title:'测试管理', //菜单标题
                     hidden:false,
                     icon:"Moon",
                 }

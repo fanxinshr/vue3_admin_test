@@ -38,7 +38,7 @@ let userStore = useUserStroe();
 // 引入路由对象
 import { useRouter,useRoute } from "vue-router";
 
-console.log(userStore.username);
+// console.log(userStore.username);
 
 // 获取路由器对象
 let $router = useRouter();

@@ -41,7 +41,7 @@ app.use(ElementPlus, {
 // 引入自定义插件对象，注册整个项目的全局组件
 import globalComponent from '@/components';
 
-console.log(globalComponent);
+// console.log(globalComponent);
 // 安装自定义插件
 app.use(globalComponent)
 
@@ -58,7 +58,7 @@ import './permission'
 app.mount('#app')
 
 // createApp(App).mount('#app')
-console.log(import.meta.env);
+// console.log(import.meta.env);
 
 // 引入模板的全局样式
 import '@/styles/index.scss'

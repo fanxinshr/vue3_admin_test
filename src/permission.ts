@@ -16,10 +16,7 @@ import setting from './setting';
 
 let userStore = useUserStroe(pinia);
 
-
-
 // 全局守卫 项目当中任意路由切换都会触发的钩子
-
 
 
 // 全局前置守卫
@@ -28,14 +25,14 @@ router.beforeEach(async(to:any, from:any, next:any) => {
     document.title = setting.title + '-' +to.meta.title
     nprogress.start();
     // 访问某个路由之前的的守卫
-    console.log(223);
+    console.log('111 in permission.ts in router.beforeEach');
     // 获取token，判断用户登录还是未登录
     let token = userStore.token;
-    console.log('token in permission.ts is ',token);
+    // console.log('token in permission.ts is ',token);
     
     // 获取用户的名字
     let username = userStore.username;
-    console.log('username in permission.ts is ',username);
+    // console.log('username in permission.ts is ',username);
     
     if(token){
         // 登录成功，访问login，不能访问，指向首页
@@ -87,6 +84,6 @@ router.beforeEach(async(to:any, from:any, next:any) => {
 
 // 全局后置守卫
 router.afterEach((to:any, from:any) => {
-    console.log("224 in permission.ts in router.afterEach ");
+    console.log("222 in permission.ts in router.afterEach ");
     nprogress.done()
 })
