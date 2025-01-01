@@ -28,11 +28,11 @@ router.beforeEach(async(to:any, from:any, next:any) => {
     console.log('111 in permission.ts in router.beforeEach');
     // 获取token，判断用户登录还是未登录
     let token = userStore.token;
-    // console.log('token in permission.ts is ',token);
+    console.log('token in permission.ts is ',token);
     
     // 获取用户的名字
     let username = userStore.username;
-    // console.log('username in permission.ts is ',username);
+    console.log('username in permission.ts is ',username);
     
     if(token){
         // 登录成功，访问login，不能访问，指向首页
@@ -76,8 +76,6 @@ router.beforeEach(async(to:any, from:any, next:any) => {
         }
 
     }
-
-    
     // next();
 
 })

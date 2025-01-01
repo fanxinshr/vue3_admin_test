@@ -1,14 +1,7 @@
 <template>
-    <el-form
-      ref="ruleFormRef"
-      style="max-width: 600px"
-      :model="ruleForm"
-      :rules="rules"
-      label-width="auto"
-      class="demo-ruleForm"
-      :size="formSize"
-      status-icon
-    >
+  <el-card>
+    <el-form ref="ruleFormRef" style="max-width: 600px" :model="ruleForm" :rules="rules" label-width="auto"
+      class="demo-ruleForm" :size="formSize" status-icon>
       <el-form-item label="Activity name" prop="name">
         <el-input v-model="ruleForm.name" />
       </el-form-item>
@@ -19,22 +12,13 @@
         </el-select>
       </el-form-item>
       <el-form-item label="Activity count" prop="count">
-        <el-select-v2
-          v-model="ruleForm.count"
-          placeholder="Activity count"
-          :options="options"
-        />
+        <el-select-v2 v-model="ruleForm.count" placeholder="Activity count" :options="options" />
       </el-form-item>
       <el-form-item label="Activity time" required>
         <el-col :span="11">
           <el-form-item prop="date1">
-            <el-date-picker
-              v-model="ruleForm.date1"
-              type="date"
-              aria-label="Pick a date"
-              placeholder="Pick a date"
-              style="width: 100%"
-            />
+            <el-date-picker v-model="ruleForm.date1" type="date" aria-label="Pick a date" placeholder="Pick a date"
+              style="width: 100%" />
           </el-form-item>
         </el-col>
         <el-col class="text-center" :span="2">
@@ -42,12 +26,8 @@
         </el-col>
         <el-col :span="11">
           <el-form-item prop="date2">
-            <el-time-picker
-              v-model="ruleForm.date2"
-              aria-label="Pick a time"
-              placeholder="Pick a time"
-              style="width: 100%"
-            />
+            <el-time-picker v-model="ruleForm.date2" aria-label="Pick a time" placeholder="Pick a time"
+              style="width: 100%" />
           </el-form-item>
         </el-col>
       </el-form-item>
@@ -89,124 +69,154 @@
         <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
       </el-form-item>
     </el-form>
-  </template>
-  
-  <script lang="ts" setup>
-  import { reactive, ref } from 'vue'
-  import type { ComponentSize, FormInstance, FormRules } from 'element-plus'
-  
-  interface RuleForm {
-    name: string
-    region: string
-    count: string
-    date1: string
-    date2: string
-    delivery: boolean
-    location: string
-    type: string[]
-    resource: string
-    desc: string
-  }
-  
-  const formSize = ref<ComponentSize>('default')
-  const ruleFormRef = ref<FormInstance>()
-  const ruleForm = reactive<RuleForm>({
-    name: 'Hello',
-    region: '',
-    count: '',
-    date1: '',
-    date2: '',
-    delivery: false,
-    location: '',
-    type: [],
-    resource: '',
-    desc: '',
+
+  </el-card>
+
+  <el-card>
+    <ag-grid-vue :rowData="rowData" :columnDefs="colDefs" style="height: 500px" class="ag-theme-quartz">
+    </ag-grid-vue>
+  </el-card>
+
+</template>
+
+<script lang="ts" setup>
+import { reactive, ref } from 'vue'
+import type { ComponentSize, FormInstance, FormRules } from 'element-plus'
+
+import { AgGridVue } from "ag-grid-vue3";// Vue Data Grid Component
+
+import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the Data Grid
+import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the Data Grid
+
+const rowData = ref([
+   { make: "Tesla", model: "Model Y", price: 64950, electric: true },
+   { make: "Ford", model: "F-Series", price: 33850, electric: false },
+   { make: "Toyota", model: "Corolla", price: 29600, electric: false },
+ ]);
+
+ // Column Definitions: Defines the columns to be displayed.
+ const colDefs = ref([
+   { field: "make" },
+   { field: "model" },
+   { field: "price" },
+   { field: "electric" }
+ ]);
+
+interface RuleForm {
+  name: string
+  region: string
+  count: string
+  date1: string
+  date2: string
+  delivery: boolean
+  location: string
+  type: string[]
+  resource: string
+  desc: string
+}
+
+const formSize = ref<ComponentSize>('default')
+const ruleFormRef = ref<FormInstance>()
+const ruleForm = reactive<RuleForm>({
+  name: 'Hello',
+  region: '',
+  count: '',
+  date1: '',
+  date2: '',
+  delivery: false,
+  location: '',
+  type: [],
+  resource: '',
+  desc: '',
+})
+
+const locationOptions = ['Home', 'Company', 'School']
+
+const rules = reactive<FormRules<RuleForm>>({
+  name: [
+    { required: true, message: 'Please input Activity name', trigger: 'blur' },
+    { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' },
+  ],
+  region: [
+    {
+      required: true,
+      message: 'Please select Activity zone',
+      trigger: 'change',
+    },
+  ],
+  count: [
+    {
+      required: true,
+      message: 'Please select Activity count',
+      trigger: 'change',
+    },
+  ],
+  date1: [
+    {
+      type: 'date',
+      required: true,
+      message: 'Please pick a date',
+      trigger: 'change',
+    },
+  ],
+  date2: [
+    {
+      type: 'date',
+      required: true,
+      message: 'Please pick a time',
+      trigger: 'change',
+    },
+  ],
+  location: [
+    {
+      required: true,
+      message: 'Please select a location',
+      trigger: 'change',
+    },
+  ],
+  type: [
+    {
+      type: 'array',
+      required: true,
+      message: 'Please select at least one activity type',
+      trigger: 'change',
+    },
+  ],
+  resource: [
+    {
+      required: true,
+      message: 'Please select activity resource',
+      trigger: 'change',
+    },
+  ],
+  desc: [
+    { required: true, message: 'Please input activity form', trigger: 'blur' },
+  ],
+})
+
+const submitForm = async (formEl: FormInstance | undefined) => {
+  if (!formEl) return
+  await formEl.validate((valid, fields) => {
+    if (valid) {
+      console.log('submit!')
+    } else {
+      console.log('error submit!', fields)
+    }
   })
-  
-  const locationOptions = ['Home', 'Company', 'School']
-  
-  const rules = reactive<FormRules<RuleForm>>({
-    name: [
-      { required: true, message: 'Please input Activity name', trigger: 'blur' },
-      { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' },
-    ],
-    region: [
-      {
-        required: true,
-        message: 'Please select Activity zone',
-        trigger: 'change',
-      },
-    ],
-    count: [
-      {
-        required: true,
-        message: 'Please select Activity count',
-        trigger: 'change',
-      },
-    ],
-    date1: [
-      {
-        type: 'date',
-        required: true,
-        message: 'Please pick a date',
-        trigger: 'change',
-      },
-    ],
-    date2: [
-      {
-        type: 'date',
-        required: true,
-        message: 'Please pick a time',
-        trigger: 'change',
-      },
-    ],
-    location: [
-      {
-        required: true,
-        message: 'Please select a location',
-        trigger: 'change',
-      },
-    ],
-    type: [
-      {
-        type: 'array',
-        required: true,
-        message: 'Please select at least one activity type',
-        trigger: 'change',
-      },
-    ],
-    resource: [
-      {
-        required: true,
-        message: 'Please select activity resource',
-        trigger: 'change',
-      },
-    ],
-    desc: [
-      { required: true, message: 'Please input activity form', trigger: 'blur' },
-    ],
-  })
-  
-  const submitForm = async (formEl: FormInstance | undefined) => {
-    if (!formEl) return
-    await formEl.validate((valid, fields) => {
-      if (valid) {
-        console.log('submit!')
-      } else {
-        console.log('error submit!', fields)
-      }
-    })
-  }
-  
-  const resetForm = (formEl: FormInstance | undefined) => {
-    if (!formEl) return
-    formEl.resetFields()
-  }
-  
-  const options = Array.from({ length: 10000 }).map((_, idx) => ({
-    value: `${idx + 1}`,
-    label: `${idx + 1}`,
-  }))
-  </script>
-  
+}
+
+const resetForm = (formEl: FormInstance | undefined) => {
+  if (!formEl) return
+  formEl.resetFields()
+}
+
+const options = Array.from({ length: 10000 }).map((_, idx) => ({
+  value: `${idx + 1}`,
+  label: `${idx + 1}`,
+}))
+
+
+
+</script>
+
 <style lang="scss" scoped></style>

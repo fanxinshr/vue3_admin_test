@@ -166,13 +166,23 @@ export const constantRoute = [
                 }
             },
             {
-                path:'/product/test',
+                path:'/product/test1',
                 component:()=>import('@/views/product/test/index.vue'),
-                name:"Sku",
+                name:"test1",
                 meta:{
-                    title:'测试管理', //菜单标题
+                    title:'表单组件管理', //菜单标题
                     hidden:false,
-                    icon:"Moon",
+                    icon:"DocumentAdd",
+                }
+            },
+            {
+                path:'/product/test2',
+                component:()=>import('@/views/product/test2/index.vue'),
+                name:"test2",
+                meta:{
+                    title:'tab组件管理', //菜单标题
+                    hidden:false,
+                    icon:"Notebook",
                 }
             },
         ]

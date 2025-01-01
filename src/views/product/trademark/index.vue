@@ -36,9 +36,10 @@
         <el-table-column label="品牌操作">
           <template #="{ row, $index }">
             <el-button type="primary" size="small" icon="Edit" @click="UpdateTrademark(row)"></el-button>
-            <el-popconfirm :title="`您确认要删除${row.tmName}?`" width="250px" icon="Delete" icon-color="black" @confirm="removeTradeMark(row.id)">
+            <el-popconfirm type="danger" :title="`您确认要删除${row.tmName}?`" width="250px" icon="Delete" icon-color="red"
+              @confirm="removeTradeMark(row.id)">
               <template #reference>
-                <el-button type="primary" size="small" icon="Delete"></el-button>
+                <el-button type="danger" size="small" icon="Delete"></el-button>
               </template>
             </el-popconfirm>
           </template>
@@ -114,7 +115,7 @@ import type { UploadProps, FormInstance } from 'element-plus'
 let pageNo = ref<number>(1)
 
 // 每一页展示多少条数据
-let pageSize = ref<number>(10)
+let pageSize = ref<number>(15)
 
 // 存储已有品牌数据总量
 let total = ref<number>(0)
@@ -332,28 +333,28 @@ const confirm = async () => {
 }
 
 // 气泡确认框确定按钮的回调函数
-const removeTradeMark = async (id:number) => {
+const removeTradeMark = async (id: number) => {
   // console.log("removeTradeMark");
   // console.log(id);
   let result = await reqDeleteTrademark(id)
   console.log(result);
-  
-  if(result.code == 200){
+
+  if (result.code == 200) {
     // 删除成功提示信息
     ElMessage({
-      type:'success',
-      message:'删除品牌成功'
+      type: 'success',
+      message: '删除品牌成功'
     });
     // 再次获取已有品牌的数据
-    getHasTrademark(trademarkArr.value.length>1?pageNo.value:pageNo.value-1);
-  }else{
+    getHasTrademark(trademarkArr.value.length > 1 ? pageNo.value : pageNo.value - 1);
+  } else {
     ElMessage({
-      type:'error',
-      message:'删除品牌失败'
+      type: 'error',
+      message: '删除品牌失败'
     })
   }
 
-  
+
 }
 
 </script>
