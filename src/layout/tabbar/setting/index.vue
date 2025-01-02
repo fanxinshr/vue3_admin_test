@@ -22,14 +22,15 @@
 </template>
 
 <script setup lang="ts" name="Setting">
-import { ref, reactive } from "vue"
-import { ArrowRight, Expand, FullScreen, Refresh, Setting, User } from "@element-plus/icons-vue";
+// import { ref, reactive } from "vue"
+// import { ArrowRight, Expand, FullScreen, Refresh, Setting, User } from "@element-plus/icons-vue";
+import { FullScreen, Refresh, Setting } from "@element-plus/icons-vue";
 
 // 获取骨架的小仓库
-import useLayOutSettingStore from "@/store/modules/setting";
+import useLayOutSettingStore from "../../../store/modules/setting";
 
 // 获取用户相关的小仓库
-import useUserStroe from "@/store/modules/user";
+import useUserStroe from "../../../store/modules/user";
 
 let LayoutSettingStrore = useLayOutSettingStore();
 

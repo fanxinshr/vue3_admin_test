@@ -12,9 +12,9 @@
     </div>
 </template>
 <script setup lang="ts" name="Main">
-import { ref, reactive,nextTick } from "vue"
+import { ref,nextTick } from "vue"
 // 获取骨架的小仓库
-import useLayOutSettingStore from "@/store/modules/setting";
+import useLayOutSettingStore from "../../store/modules/setting";
 
 // 控制当前组件是否销毁重建
 let flag = ref(true)

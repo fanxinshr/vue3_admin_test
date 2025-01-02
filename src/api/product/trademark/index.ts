@@ -1,5 +1,5 @@
 // 品牌管理模块的接口
-import request from "@/utils/request";
+import request from "../../../utils/request";
 import type { TradeMakrResponseData, TradeMark } from "./type";
 
 // 品牌管理模块接口地址

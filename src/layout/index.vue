@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts" name="Layout">
-import { ref, reactive } from "vue"
+// import { ref, reactive } from "vue"
 
 // 引入左侧菜单logo子组件
 import Logo from './logo/index.vue'
@@ -61,8 +61,8 @@ import Tabbar from './tabbar/index.vue'
 // 获取路由对象
 import { useRoute } from "vue-router"
 // 获取用户相关的小仓库
-import useUserStroe from "@/store/modules/user";
-import useLayOutSettingStore from "@/store/modules/setting"
+import useUserStroe from "../store/modules/user";
+import useLayOutSettingStore from "../store/modules/setting"
 // 获取layout配置仓库
 
 let LayOutSettingStore = useLayOutSettingStore();

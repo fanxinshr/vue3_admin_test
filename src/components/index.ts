@@ -18,7 +18,7 @@ export default {
         // 注册项目的全部的全局组件
         Object.keys(allGlobalComponent).forEach( item => {
             // console.log(123456);
-            app.component(item,allGlobalComponent[item])
+            app.component(item,allGlobalComponent[item as keyof typeof allGlobalComponent])
         });
         // 将element-plus提供的图标注册为全局组件
         // 数组，里面放图标的名字和组件

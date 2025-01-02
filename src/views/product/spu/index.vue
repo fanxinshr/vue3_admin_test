@@ -5,7 +5,7 @@
   </div>
 </template>
 <script setup lang="ts" name="Name">
-import {ref,reactive} from "vue"
+// import {ref,reactive} from "vue"
 
 
 </script>

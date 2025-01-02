@@ -87,13 +87,14 @@
 import { reactive, watch, nextTick, ref, onMounted, onBeforeUnmount } from "vue";
 
 // 引入属性管理模块的接口
-import { reqAttr, reqC1Category, reqC2Category, reqC3Category, reqAddOrUpdateAttr, reqDeleteAttr } from "@/api/product/attr";
-import type { AttrResponseData, Attr, AttrValueList } from "@/api/product/attr/type";
+// import { reqAttr, reqC1Category, reqC2Category, reqC3Category, reqAddOrUpdateAttr, reqDeleteAttr } from "@/api/product/attr";
+import { reqAttr, reqAddOrUpdateAttr, reqDeleteAttr } from "../../../api/product/attr";
+import type { AttrResponseData, Attr, AttrValue } from "../../../api/product/attr/type";
 
 
 // import { ref, onMounted } from "vue";
 import { ElMessage } from "element-plus";
-import { useCategoryStore } from "@/store/modules/category";
+import { useCategoryStore } from "../../../store/modules/category";
 
 // 获取属性列表,存储一级分类的数据
 const attrList = ref<Attr[]>([])
@@ -105,14 +106,14 @@ const scene = ref<number>(0); // 0 表示显示table 1表示展示添加与修�
 const inputArr = ref<any>([])
 
 // 定义一个变量，用于控制数据编辑模式与展示模式的切换
-const flag = ref<boolean>(true);
+// const flag = ref<boolean>(true);
 
 // 定义一个变量，用于存储当前选中的属性对象
 const currentAttr = ref<Attr | null>(null)
 
 // 收集新增的属性值的数据
-const attrParams = reactive<Attr>({
-  attrName: "", // 属性名称
+let attrParams = reactive<Attr>({
+  attrName: '', // 属性名称
   attrValueList: [], // 属性值列表
   categoryId: '', // 三级分类的ID
   categoryLevel: 3, // 归于哪个分类级别
@@ -230,7 +231,7 @@ const updateAttr = (row: Attr) => {
 const deleteAttr = async (row: Attr) => {
   // console.log(row);
   // 调用接口，删除属性
-  const result = await reqDeleteAttr(row.id)
+  const result = await reqDeleteAttr(Number(row.id))
   if (result.code == 200) {
     ElMessage.success(result.message)
     // 再次获取剩余的获取属性列表
@@ -253,7 +254,7 @@ const cancelHandler = () => {
 // 添加属性值按钮的回调函数
 const addAttrValueHandler = () => {
   // 点击添加属性值按钮的时候，向数组添加一个属性值对象
-  console.log(attrParams);
+  // console.log(attrParams);
   // 添加属性值
   attrParams.attrValueList.push({
     valueName: '',
@@ -274,7 +275,7 @@ const saveAttrHandler = async () => {
   attrParams.categoryId = categoryStore.category3Id
   console.log(attrParams);
   // 发送请求
-  const result = await reqAddOrUpdateAttr(attrParams)
+  let result:any = await reqAddOrUpdateAttr(attrParams)
   // 判断请求是否成功，成功则清空数据，切换场景
   if (result.code == 200) {
     ElMessage.success(result.message)
@@ -294,7 +295,7 @@ const saveAttrHandler = async () => {
 
 // 属性值表单元素失去焦点的方法
 // 切换数据编辑模式与展示模式的回调函数
-const changeToLookMode = (row: Attr, index: number) => {
+const changeToLookMode = (row: AttrValue, index: number) => {
 
   console.log(index);
 
@@ -309,9 +310,10 @@ const changeToLookMode = (row: Attr, index: number) => {
   }
 
   // 不能输入相同的属性值
-  const res = attrParams.attrValueList.find((item: AttrValueList) => {
+  const res = attrParams.attrValueList.find((item: AttrValue) => {
+    console.log(item);
     // 切记把当前失去焦点的属性值对象排除在外
-    if (item != row) {
+    if ( item.valueName != row.valueName) {
       return item.valueName == row.valueName;
     }
   })
@@ -321,12 +323,11 @@ const changeToLookMode = (row: Attr, index: number) => {
     return
   }
 
-
   row.flag = false;
 }
 
 // 切换数据编辑模式与展示模式的回调函数
-const changeToEditMode = (row: Attr, $index: number) => {
+const changeToEditMode = (row: AttrValue, $index: number) => {
   row.flag = true;
   // 使用nextTick，等待DOM更新完成 
   // nextTick 是Vue提供的异步函数，等待DOM更新完成,响应式数据发生变化，获取更新的DOM(组件实例)

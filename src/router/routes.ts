@@ -188,6 +188,58 @@ export const constantRoute = [
         ]
     },
     {
+        path:'/test',
+        component:()=>import('@/layout/index.vue'),
+        name:'Test',
+        meta:{
+            title:'测试', //菜单标题
+            hidden:false,
+            icon:"Reading",
+        },
+        children:[
+            {
+                path:'/test/test1',
+                component:()=>import('@/views/test/test1/index.vue'),
+                name:"Test1",
+                meta:{
+                    title:'测试1', //菜单标题
+                    hidden:false,
+                    icon:"Edit",
+                }
+            },
+            {
+                path:'/test/test2',
+                component:()=>import('@/views/test/test2/index.vue'),
+                name:"Test2",
+                meta:{
+                    title:'测试2', //菜单标题
+                    hidden:false,
+                    icon:"Edit",
+                }
+            },
+            {
+                path:'/test/test3',
+                component:()=>import('@/views/test/test3/index.vue'),
+                name:"Test3",
+                meta:{
+                    title:'测试3', //菜单标题
+                    hidden:false,
+                    icon:"Edit",
+                }
+            },
+            {
+                path:'/test/test4',
+                component:()=>import('@/views/test/test4/index.vue'),
+                name:"Test4",
+                meta:{
+                    title:'测试4', //菜单标题
+                    hidden:false,
+                    icon:"Edit",
+                }
+            },
+        ]
+    },
+    {
         // 任意路由
         path:'/:pathMatch(.*)*',
         redirect:'404',

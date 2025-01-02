@@ -121,20 +121,18 @@
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button type="primary" size="default" @click="roleAssignConfirm">确定</el-button>
       <el-button type="primary" size="default" @click="roleAssignCancel">取消</el-button>
+      <el-button type="primary" size="default" @click="roleAssignConfirm">确定</el-button>
     </template>
   </el-drawer>
 
 </template>
 <script setup lang="ts" name="Name">
 import { ref, onMounted, reactive, nextTick } from 'vue';
-import { reqGetUserInfo, reqAddOrUpdateUser, reqAllRole, reqAssignUserRole, reqDeleteUser, reqDeleteUserBatch } from '@/api/acl/user';
+import { reqGetUserInfo, reqAddOrUpdateUser, reqAllRole, reqAssignUserRole, reqDeleteUser, reqDeleteUserBatch } from '../../../api/acl/user';
 import type { UserInfoListResponseData, UserInfoList, UserInfoData, AllRoleResponseData, AllRoleList, RoleData, 
-  AssignUserRoleData } from '@/api/acl/user/type';
+  AssignUserRoleData } from '../../../api/acl/user/type';
 import { ElMessage } from 'element-plus';     
-import { pa } from 'element-plus/es/locales.mjs';
-
 
 // 分页器, 默认第一页, 每页10条, 总数0
 const page = ref<number>(1);
@@ -171,6 +169,7 @@ const searchInput = ref<string>('');
 // 自定义校验规则
 // 校验用户名字的回调函数
 const validateUsername = (rule: any, value: any, callback: any) => {
+  console.log(rule);
   if (!value) {
     return callback(new Error('请输入用户名'));
   }
@@ -188,6 +187,7 @@ const validateUsername = (rule: any, value: any, callback: any) => {
 
 // 校验用户昵称的回调函数
 const validateName = (rule: any, value: any, callback: any) => {  
+  console.log(rule);
   if (!value) {
     return callback(new Error('请输入用户昵称'));
   }
@@ -196,6 +196,7 @@ const validateName = (rule: any, value: any, callback: any) => {
 
 // 校验用户密码的回调函数
 const validatePassword = (rule: any, value: any, callback: any) => {  
+  console.log(rule);
   if (!value) {
     return callback(new Error('请输入密码'));
   }
@@ -246,7 +247,7 @@ const handleAddUser = () => {
     username: '',
     name: '',
     password: '',
-    roleName: [],
+    // roleName: [],
   });
 
   // 清除上一次的错误提示信息
@@ -385,7 +386,7 @@ const handleRoleAssign = async (row: UserInfoData) => {
   console.log('userId in handleRoleAssign is:', userId);
 
   // 获取用户的全部职位
-  let res: AllRoleResponseData = await reqAllRole(userId);
+  let res: AllRoleResponseData = await reqAllRole(Number(userId));
   console.log('res in handleRoleAssign is:', res);
   
   if(res.code === 200){
@@ -450,8 +451,8 @@ const roleAssignConfirm = async () => {
   console.log('分配角色确定');
   // 收集数据
   let data:AssignUserRoleData = {
-    userId: userParams.id as number,
-    roleIdList: userRoleList.value.map((item: RoleData) => item.id),
+    userId: Number(userParams.id),
+    roleIdList: userRoleList.value.map((item: RoleData) => Number(item.id)),
   }
   // console.log('data in roleAssignConfirm is:', data);
   // 调用接口，给已有账号分配职位

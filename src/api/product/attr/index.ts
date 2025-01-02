@@ -1,9 +1,9 @@
 // 这里是书写属性相关的API的
-import request from "@/utils/request";
-import type { CategoryResponseData, AttrResponseData } from "./type";
+import request from "../../../utils/request";
+import type { CategoryResponseData, AttrResponseData, Attr } from "./type";
 
 // 自定义的request实例
-import request2 from "@/utils/request2";
+import request2 from "../../../utils/request2";
 
 // 属性管理模块接口地址,使用枚举类型
 enum API {

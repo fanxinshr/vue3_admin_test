@@ -2,18 +2,18 @@
 import { defineStore } from "pinia";
 
 // 引入接口
-import { reqLogin, reqUserInfo, reqLogout } from "@/api/user";
+import { reqLogin, reqUserInfo, reqLogout } from "../../api/user";
 // 引入数据类型
 // import type { loginForm } from "@/api/user/type";
 import type { UserState } from "./types/types";
 
 // 引入操作本地存储的文件
-import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from "@/utils/token";
+import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from "../../utils/token";
 // 引入路由(常量路由)
-import { constantRoute } from '@/router/routes';
+import { constantRoute } from "../../router/routes";
 
 
-import { loginFormData, loginResponseData, userInfoResponseData } from "@//api/user/type";
+import { loginFormData, loginResponseData, userInfoResponseData } from "../../api/user/type";
 // import type { loginFormData, loginResponseData,userInfoResponseData } from "./type";
 // 
 

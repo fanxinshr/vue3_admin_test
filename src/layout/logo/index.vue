@@ -5,11 +5,11 @@
   </div>
 </template>
 <script setup lang="ts" name="Logo">
-import {ref,reactive} from "vue"
+// import {ref,reactive} from "vue"
 // 引入设置标题与logo的配置文件
-import setting from "@/setting";
+import setting from "../../setting";
 
-import useLayOutSettingStore from "@/store/modules/setting"
+import useLayOutSettingStore from "../../store/modules/setting"
 // 获取layout配置仓库
 
 let LayOutSettingStore = useLayOutSettingStore();

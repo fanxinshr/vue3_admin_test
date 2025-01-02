@@ -1,7 +1,7 @@
 <template>
     <!-- <h1>动态生成菜单</h1> -->
     <!-- <h1>{{ menuList }}</h1> -->
-    <template v-for="(item, index) in menuList" :key="item.path">
+    <template v-for="(item) in menuList" :key="item.path">
         <!-- 没有子路由 -->
         <template v-if="!item.children">
             <el-menu-item :index="item.path" v-if="!item.meta.hidden" @click="goRoute">
@@ -43,9 +43,9 @@
 
 </template>
 <script setup lang="ts" name="Menu">
-import { Script } from "vm";
-import { ref, reactive } from "vue"
-import { useRoute } from "vue-router";
+// import { Script } from "vm";
+// import { ref, reactive } from "vue"
+// import { useRoute } from "vue-router";
 
 // 获取路由器对象
 import { useRouter } from "vue-router";

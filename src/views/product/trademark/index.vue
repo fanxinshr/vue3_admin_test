@@ -19,7 +19,7 @@
           </template>
         </el-table-column>
         <el-table-column label="品牌特征" align="center">
-          <template #="{ row, $index }">
+          <template #="{ row }">
             <pre style="color: peru; border-left: 1px;">{{ row.tmName }}</pre>
           </template>
         </el-table-column>
@@ -29,12 +29,12 @@
           </template>
         </el-table-column>
         <el-table-column label="品牌logo" align="center" prop="logoUrl">
-          <template #="{ row, $index }">
+          <template #="{ row }">
             <img :src="row.logoUrl" alt="" style="height: 30px;">
           </template>
         </el-table-column>
         <el-table-column label="品牌操作">
-          <template #="{ row, $index }">
+          <template #="{ row }">
             <el-button type="primary" size="small" icon="Edit" @click="UpdateTrademark(row)"></el-button>
             <el-popconfirm type="danger" :title="`您确认要删除${row.tmName}?`" width="250px" icon="Delete" icon-color="red"
               @confirm="removeTradeMark(row.id)">
@@ -105,8 +105,8 @@
 
 <script setup lang="ts" name="Name">
 import { ref, onMounted, reactive } from "vue"
-import { reqHasTrademark, reqAddOrUpdateTrademark, reqDeleteTrademark } from "@/api/product/trademark";
-import { Records, TradeMakrResponseData, TradeMark } from "@/api/product/trademark/type";
+import { reqHasTrademark, reqAddOrUpdateTrademark, reqDeleteTrademark } from "../../../api/product/trademark";
+import { Records, TradeMakrResponseData, TradeMark } from "../../../api/product/trademark/type";
 import { ElMessage } from 'element-plus'
 import { Plus } from '@element-plus/icons-vue'
 import type { UploadProps, FormInstance } from 'element-plus'
@@ -139,6 +139,7 @@ const formRef = ref<FormInstance>()
 // 品牌校验自定义校验规则的方法
 const validatorTmName = (rule: any, value: any, callback: any) => {
   // 
+  console.log(rule);
   console.log(222);
   // 表单元素触发blur的时候，会触发此方法
   // 自定义的校验规则
@@ -156,6 +157,7 @@ const validatorTmName = (rule: any, value: any, callback: any) => {
 // 品牌logo图片的自定义校验规则
 const validatorLogoUrl = (rule: any, value: any, callback: any) => {
   // console.log("validatorLogoUrl");
+  console.log(rule);
   // 如果图片上传
   if (value) {
     callback();
@@ -300,7 +302,7 @@ const cancel = () => {
 const confirm = async () => {
   // 在发送请求之前，对于整个表单进行校验
   // 调用这个方法进行全部表单项的校验，如果校验全部通过
-  await formRef.value.validate();
+  await formRef.value?.validate();
 
   let result: any = await reqAddOrUpdateTrademark(trademarkParams);
   console.log("result is ", result);

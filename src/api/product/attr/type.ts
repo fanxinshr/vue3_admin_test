@@ -22,22 +22,22 @@ export interface CategoryResponseData extends ResponseData {
 
 // 已有属性值与属性值对象的TS类型
 // 新增的属性值，是没有id和attrId的
-export interface Attr {
-    id?: number, // 属性值的id
-    valueName: string, // 属性值的名称  
-    attrId?: number | string, // 属性id
-    flag?: boolean // 控制数据编辑模式与展示模式的切换
+export interface AttrValue {
+    id?: number
+    valueName: string
+    attrId?: number
+    flag?: boolean
 }
 
 // 存储每一个属性值的数组类型
-export type AttrValueList = Attr[];
+export type AttrValueList = AttrValue[];
 
 // 属性对象
 export interface Attr {
-    id?: number,
-    attrName: string,
-    categoryId: number | string,
-    categoryLevel: number,
+    id?: number
+    attrName: string
+    categoryId: number | string
+    categoryLevel: number
     attrValueList: AttrValueList
 }
 

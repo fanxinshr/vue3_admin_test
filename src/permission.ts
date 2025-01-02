@@ -21,6 +21,7 @@ let userStore = useUserStroe(pinia);
 
 // 全局前置守卫
 router.beforeEach(async(to:any, from:any, next:any) => {
+    console.log(from);
     // 修改tab页标题
     document.title = setting.title + '-' +to.meta.title
     nprogress.start();
@@ -82,6 +83,9 @@ router.beforeEach(async(to:any, from:any, next:any) => {
 
 // 全局后置守卫
 router.afterEach((to:any, from:any) => {
+    console.log(to);
+    console.log(from);
     console.log("222 in permission.ts in router.afterEach ");
     nprogress.done()
 })
+

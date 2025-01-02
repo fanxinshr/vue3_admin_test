@@ -33,9 +33,9 @@
 <script setup lang="ts" name="Category">
 // 引入属性管理模块的接口
 // import { reqAttrList, reqAttrList2, reqC1Category, reqC2Category, reqC3Category } from "@/api/product/attr";
-import { ref, onMounted } from "vue";
+import { onMounted } from "vue";
 // import { ElMessage } from "element-plus";
-import { useCategoryStore } from "@/store/modules/category";
+import { useCategoryStore } from "../../store/modules/category";
 
 
 // 获取分类仓库
@@ -60,11 +60,11 @@ onMounted(async () => {
 })
 
 // 监听一级分类数据的变化
-const getCategory1List = () => {
-  // 通知仓库获取一级分类的数据
-  // await categoryStore.getCategory1List()
+// const getCategory1List = () => {
+//   // 通知仓库获取一级分类的数据
+//   // await categoryStore.getCategory1List()
 
-}
+// }
 
 
 // 获取分类数据的方法写在store中
@@ -113,7 +113,7 @@ const getC2CategoryHandler = async () => {
   
 
   // 使用store中的方法，获取二级分类的数据
-  await categoryStore.getCategory2List(categoryStore.category1Id);
+  await categoryStore.getCategory2List(Number(categoryStore.category1Id));
 
   
 }
@@ -124,7 +124,7 @@ const getC3CategoryHandler = async () => {
   categoryStore.category3Id = ''
   categoryStore.category3List = []
   // 使用store中的方法，获取三级分类的数据
-  await categoryStore.getCategory3List(categoryStore.category2Id)
+  await categoryStore.getCategory3List(Number(categoryStore.category2Id))
 }
 
 // 定义一个props，接收父组件传递过来的scene数值

@@ -11,13 +11,11 @@
   </div>
 </template>
 <script setup lang="ts" name="Tabbar">
-import { ArrowRight, Expand, FullScreen, Refresh, Setting, User } from "@element-plus/icons-vue";
-import { ref, reactive } from "vue"
+// import { ArrowRight, Expand, FullScreen, Refresh, Setting, User } from "@element-plus/icons-vue";
+import { Setting } from "@element-plus/icons-vue";
+// import { ref, reactive } from "vue"
 import Breadcrumb from "./breadcrumb/index.vue"
 import setting from "./setting/index.vue"
-
-
-
 
 </script>
 <style lang="scss" scoped>

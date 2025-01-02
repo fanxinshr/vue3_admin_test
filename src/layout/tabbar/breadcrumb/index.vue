@@ -21,7 +21,7 @@
 
 import { ArrowRight } from "@element-plus/icons-vue";
 // src\store\modules\setting.ts
-import useLayOutSettingStore from '@/store/modules/setting'
+import useLayOutSettingStore from '../../../store/modules/setting'
 
 // 获取layout配置相关的仓库
 let LayoutSettingStrore = useLayOutSettingStore();

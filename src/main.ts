@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import router from './router'
 // SVG插件需要配置代码
 // import "virtual:svg-icons-register"
-import 'virtual:svg-icons-register'
+// import 'virtual:svg-icons-register'
 
 
 // import './style.css'
@@ -39,7 +39,7 @@ app.use(ElementPlus, {
 // app.use(ElementPlus, { size: 'small', zIndex: 3000 })
 
 // 引入自定义插件对象，注册整个项目的全局组件
-import globalComponent from '@/components';
+import globalComponent from './components';
 
 // console.log(globalComponent);
 // 安装自定义插件

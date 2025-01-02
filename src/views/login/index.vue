@@ -38,10 +38,10 @@ import { User, Lock } from '@element-plus/icons-vue';
 import { ElNotification } from 'element-plus';
 
 // 引入用户相关的小仓库
-import useUserStroe from "@/store/modules/user";
+import useUserStroe from "../../store/modules/user";
 
 // 引入获取当前时间的函数
-import { getTime } from "@/utils/time";
+import { getTime } from "../../utils/time";
 
 
 let useStore = useUserStroe()
@@ -140,31 +140,31 @@ const login_function = async () => {
 // }
 
 // 自定义校验规则函数
-const validatorUsername = ( rule: any, value: any, callback: any) => {
-  // rule:校验规则函数
-  // validate:表单元素文本内容
-  // 函数 如果符合条件callback放行通过即可
-  // 如果不符合条件，callback方法会注入错误提示信息
-  if (/^\d{4,10}$/.test(value)) {
-    callback();
-  } else {
-    callback(new Error("账号长度至少5位"))
-  }
-  // console.log(callback);
-}
+// const validatorUsername = ( rule: any, value: any, callback: any) => {
+//   // rule:校验规则函数
+//   // validate:表单元素文本内容
+//   // 函数 如果符合条件callback放行通过即可
+//   // 如果不符合条件，callback方法会注入错误提示信息
+//   if (/^\d{4,10}$/.test(value)) {
+//     callback();
+//   } else {
+//     callback(new Error("账号长度至少5位"))
+//   }
+//   // console.log(callback);
+// }
 
-const validatorPassword = (rule: any, value: any, callback: any) => {
-  // rule:校验规则函数
-  // validate:表单元素文本内容
-  // 函数 如果符合条件callback放行通过即可
-  // 如果不符合条件，callback方法会注入错误提示信息
+// const validatorPassword = (rule: any, value: any, callback: any) => {
+//   // rule:校验规则函数
+//   // validate:表单元素文本内容
+//   // 函数 如果符合条件callback放行通过即可
+//   // 如果不符合条件，callback方法会注入错误提示信息
 
-  // if (/^\d{6,10}$/.test(value)) {
-  //   callback();
-  // } else {
-  //   callback(new Error("密码长度至少6位"))
-  // }
-}
+//   // if (/^\d{6,10}$/.test(value)) {
+//   //   callback();
+//   // } else {
+//   //   callback(new Error("密码长度至少6位"))
+//   // }
+// }
 
 // 用户自定义规则
 const rules = {
