@@ -1,20 +1,24 @@
 <template>
   <el-card>
+    <el-label>活动申请</el-label>
+
+  </el-card>
+  <el-card style="margin-top: 20px;">
     <el-form ref="ruleFormRef" style="max-width: 600px" :model="ruleForm" :rules="rules" label-width="auto"
       class="demo-ruleForm" :size="formSize" status-icon>
-      <el-form-item label="Activity name" prop="name">
+      <el-form-item label="活动名称" prop="name">
         <el-input v-model="ruleForm.name" />
       </el-form-item>
-      <el-form-item label="Activity zone" prop="region">
+      <el-form-item label="活动区域" prop="region">
         <el-select v-model="ruleForm.region" placeholder="Activity zone">
           <el-option label="Zone one" value="shanghai" />
           <el-option label="Zone two" value="beijing" />
         </el-select>
       </el-form-item>
-      <el-form-item label="Activity count" prop="count">
+      <el-form-item label="活动数量" prop="count">
         <el-select-v2 v-model="ruleForm.count" placeholder="Activity count" :options="options" />
       </el-form-item>
-      <el-form-item label="Activity time" required>
+      <el-form-item label="活动时间" required>
         <el-col :span="11">
           <el-form-item prop="date1">
             <el-date-picker v-model="ruleForm.date1" type="date" aria-label="Pick a date" placeholder="Pick a date"
@@ -31,13 +35,13 @@
           </el-form-item>
         </el-col>
       </el-form-item>
-      <el-form-item label="Instant delivery" prop="delivery">
+      <el-form-item label="即时配送" prop="delivery">
         <el-switch v-model="ruleForm.delivery" />
       </el-form-item>
-      <el-form-item label="Activity location" prop="location">
+      <el-form-item label="活动地点" prop="location">
         <el-segmented v-model="ruleForm.location" :options="locationOptions" />
       </el-form-item>
-      <el-form-item label="Activity type" prop="type">
+      <el-form-item label="活动类型" prop="type">
         <el-checkbox-group v-model="ruleForm.type">
           <el-checkbox value="Online activities" name="type">
             Online activities
@@ -53,26 +57,26 @@
           </el-checkbox>
         </el-checkbox-group>
       </el-form-item>
-      <el-form-item label="Resources" prop="resource">
+      <el-form-item label="资源" prop="resource">
         <el-radio-group v-model="ruleForm.resource">
           <el-radio value="Sponsorship">Sponsorship</el-radio>
           <el-radio value="Venue">Venue</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="Activity form" prop="desc">
+      <el-form-item label="活动形式" prop="desc">
         <el-input v-model="ruleForm.desc" type="textarea" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitForm(ruleFormRef)">
-          Create
+          创建
         </el-button>
-        <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
+        <el-button @click="resetForm(ruleFormRef)">重置</el-button>
       </el-form-item>
     </el-form>
 
   </el-card>
 
-  <el-card>
+  <el-card style="margin-top: 20px;">
     <ag-grid-vue :rowData="rowData" :columnDefs="colDefs" style="height: 500px" class="ag-theme-quartz">
     </ag-grid-vue>
   </el-card>

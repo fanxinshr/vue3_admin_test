@@ -192,7 +192,7 @@ export const constantRoute = [
         component:()=>import('@/layout/index.vue'),
         name:'Test',
         meta:{
-            title:'测试', //菜单标题
+            title:'测试页面', //菜单标题
             hidden:false,
             icon:"Reading",
         },
@@ -202,7 +202,7 @@ export const constantRoute = [
                 component:()=>import('@/views/test/test1/index.vue'),
                 name:"Test1",
                 meta:{
-                    title:'测试1', //菜单标题
+                    title:'测试Ag-grid', //菜单标题
                     hidden:false,
                     icon:"Edit",
                 }
@@ -212,7 +212,7 @@ export const constantRoute = [
                 component:()=>import('@/views/test/test2/index.vue'),
                 name:"Test2",
                 meta:{
-                    title:'测试2', //菜单标题
+                    title:'测试骨架图', //菜单标题
                     hidden:false,
                     icon:"Edit",
                 }
@@ -222,7 +222,7 @@ export const constantRoute = [
                 component:()=>import('@/views/test/test3/index.vue'),
                 name:"Test3",
                 meta:{
-                    title:'测试3', //菜单标题
+                    title:'测试轮播图', //菜单标题
                     hidden:false,
                     icon:"Edit",
                 }
@@ -232,7 +232,7 @@ export const constantRoute = [
                 component:()=>import('@/views/test/test4/index.vue'),
                 name:"Test4",
                 meta:{
-                    title:'测试4', //菜单标题
+                    title:'测试时间序列', //菜单标题
                     hidden:false,
                     icon:"Edit",
                 }
@@ -256,7 +256,7 @@ export const constantRoute = [
                 name:"profilepage",
                 meta:{
                     title:'个人主页', //菜单标题
-                    hidden:true,
+                    hidden:false,
                     icon:"User",
                 }
             },

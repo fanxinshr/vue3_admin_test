@@ -59,10 +59,16 @@
             <h2>个人信息</h2>
             <span class="subtitle">管理您的个人信息和账户设置</span>
           </div>
-          <!-- <el-button type="primary" class="edit-button">
+          <div>
+          <el-button type="primary" class="edit-button" @click="editInfo">
             <el-icon><Edit /></el-icon>
             编辑资料
-          </el-button> -->
+          </el-button>
+          <el-button type="primary" class="edit-button" @click="getUserInfo">
+            <el-icon><User /></el-icon>
+            获取用户信息
+          </el-button>
+        </div>
         </div>
 
         <el-card class="info-card">
@@ -130,13 +136,70 @@
             </div>
           </div>
         </el-card>
+
+        <el-card class="info-card">
+          <template #header>
+            <div class="card-header">
+              <span>用户一览</span>
+            </div>
+          </template>
+          <el-table :data="tableData" style="width: 100%">
+            <el-table-column prop="username" label="用户名" />
+            <el-table-column prop="password" label="密码" />
+            <el-table-column prop="remark" label="备注" />
+          </el-table>
+        </el-card>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import { User, List, Document, Warning, Calendar, Phone, Location, OfficeBuilding } from '@element-plus/icons-vue'
+import httpService from '../../../utils/request2'
+
+// 编辑个人信息按钮的点击事件响应函数
+const editInfo = async () => {
+  console.log('编辑个人信息');
+
+  // 获取用户信息
+  const res = await httpService.get('user/jwttest')
+  console.log(res);
+
+  // let data = res.token
+  // console.log(data);  
+
+  if(res.code === 200){
+    const token = res.token
+    // 将token存储到sessionStorage中
+    sessionStorage.setItem('token', token)
+    console.log('登录成功');
+  }else{
+    console.log('登录失败');
+  }
+
+}
+
+const tableData = ref()
+
+const getUserInfo = async () => {
+  const res = await httpService.get('user/test')
+  console.log(res);
+
+  if(res.code === 200){
+    console.log('获取用户信息成功');
+    const UserInfoData = res.data
+    console.log(UserInfoData);
+    tableData.value = UserInfoData
+  }else{
+    console.log('获取用户信息失败');
+  }
+
+}
+
+
+
 </script>
 
 <style lang="scss" scoped>

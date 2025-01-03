@@ -9,23 +9,13 @@
 <template>
   <div class="home_container">
   <div class="dashboard-container">
+    <!-- 背景 -->
     <div class="gradient-background"></div>
-    
+    <!-- 头部 -->
     <div class="dashboard-header">
-      <h1>欢迎你，{{ userStore.username }}</h1>
+      <h1>欢迎您，{{ userStore.username }}</h1>
       <el-avatar :size="100" src="https://randomuser.me/api/portraits/men/1.jpg" />
     </div>
-
-    <!-- <el-card style="margin-top: 20px;" >
-      <h2>今日天气</h2> 
-      <el-image style="width: 100px; height: 100px;" src="https://th.bing.com/th/id/R.938b5eaa0a12f058bc15d4a223d4c992?rik=cwvnviAa%2bPVcFA&riu=http%3a%2f%2fbpic.588ku.com%2felement_pic%2f16%2f11%2f21%2fbdc79ee5629040de96f4e4721321609e.jpg&ehk=ROcu9TkoIHumQafvVFY2uVsO%2fCP%2beubc7lGQ9GBbz9o%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1" />
-    </el-card> -->
-
-    <el-card style="margin-top: 20px;">
-      <!-- <h2>数据走势</h2> -->
-      <el-image style="height: 750px;" src="https://xqimg.imedao.com/1761317b2f27f253faf734e2.png!800.jpg" />
-    </el-card>
-
     <div class="dashboard-grid" style="margin-top: 20px;">
       <!-- 即将到来的事件 -->
       <div class="section upcoming-events">
@@ -71,7 +61,7 @@
           <h3>日历</h3>
           <span>8 events today</span>
         </div>
-        <div class="timeline">
+        <div class="timeline" style="margin-top: 30px;">
           <div class="timeline-item" v-for="item in classes" :key="item.name">
             <div class="time">{{ item.time }}</div>
             <div class="class-info">
@@ -99,6 +89,14 @@
         </div>
       </div>
     </div>
+
+
+    <el-card style="margin-top: 20px;">
+      <!-- <h2>数据走势</h2> -->
+      <el-image style="height: 750px;" src="https://xqimg.imedao.com/1761317b2f27f253faf734e2.png!800.jpg" />
+    </el-card>
+
+    
   </div>
   </div>
 </template>
@@ -124,7 +122,13 @@ const events = ref([
   {
     title: 'Roma Theatre',
     time: '9:00 AM - 11:00 AM',
-    extraParticipants: 2,
+    extraParticipants: 3,
+    icon: 'path-to-icon'
+  },
+  {
+    title: 'Roma2 Theatre2',
+    time: '9:00 AM - 11:00 AM',
+    extraParticipants: 1,
     icon: 'path-to-icon'
   },
   // ... 更多事件
@@ -144,18 +148,17 @@ const classes = ref([
     icon: 'path-to-icon'
   },
   {
-    time: '9:00',
+    time: '10:00',
     name: 'Biology',
     duration: '2h 30m',
     icon: 'path-to-icon'
   },
   {
-    time: '9:00',
+    time: '11:00',
     name: 'Biology',
     duration: '2h 30m',
     icon: 'path-to-icon'
   }
-  // ... 更多课程
 ])
 
 const selectedPeriod = ref('all')

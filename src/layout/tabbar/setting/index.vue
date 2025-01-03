@@ -16,6 +16,8 @@
             <el-dropdown-menu>
                 <el-dropdown-item @click="goHome">我的主页</el-dropdown-item>
                 <el-dropdown-item @click="goPlans">会员计划</el-dropdown-item>
+                <el-dropdown-item @click="goTask">任务管理</el-dropdown-item>
+                <el-divider style="width: 80%; margin: 0px 10px;" />
                 <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
             </el-dropdown-menu>
         </template>
@@ -86,6 +88,11 @@ const goHome = () => {
 // 跳转到会员计划
 const goPlans = () => {
     $router.push({path:'/profile/plans'})
+}
+
+// 跳转到任务管理
+const goTask = () => {
+    $router.push({path:'/profile/task'})
 }
 
 </script>

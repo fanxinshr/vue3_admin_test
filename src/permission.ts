@@ -36,6 +36,8 @@ router.beforeEach(async(to:any, from:any, next:any) => {
     console.log('username in permission.ts is ',username);
     
     if(token){
+        console.log('token in permission.ts is not null');
+        console.log('to.path in permission.ts is ',to.path);
         // 登录成功，访问login，不能访问，指向首页
         if(to.path == '/login'){
             next({path:'/'})
@@ -56,18 +58,17 @@ router.beforeEach(async(to:any, from:any, next:any) => {
                 }catch(error){
                     // token过期，获取不到用户信息，用户手动修改了本地存储的token
                     // 退出登录，清空用户相关的数据
-                    // userStore.useLogout();
+                    userStore.useLogout();
                     // 回到登录页面
                     next({path:'/login'})
-
-
                 }
                 
             }
             
         }
 
-    } else {
+    } 
+    else {
         // 用户未登录,跳转到login页面
         if(to.path == '/login'){
             next();

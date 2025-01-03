@@ -4,7 +4,7 @@
       <h1>选择适合您的会员计划</h1>
       <p class="subtitle">解锁所有高级功能，提升您的学习体验</p>
     </div>
-    
+
     <div class="plans-wrapper">
       <!-- 免费计划 -->
       <el-card class="plan-card" :body-style="{ padding: '0px' }">
@@ -19,15 +19,21 @@
         <div class="card-content">
           <div class="features">
             <div class="feature-item">
-              <el-icon><Check /></el-icon>
+              <el-icon>
+                <Check />
+              </el-icon>
               <span>访问基础课程</span>
             </div>
             <div class="feature-item">
-              <el-icon><Check /></el-icon>
+              <el-icon>
+                <Check />
+              </el-icon>
               <span>Vue.js 入门教程</span>
             </div>
             <div class="feature-item">
-              <el-icon><Check /></el-icon>
+              <el-icon>
+                <Check />
+              </el-icon>
               <span>社区支持</span>
             </div>
           </div>
@@ -49,19 +55,27 @@
         <div class="card-content">
           <div class="features">
             <div class="feature-item">
-              <el-icon><Check /></el-icon>
+              <el-icon>
+                <Check />
+              </el-icon>
               <span>所有课程无限制访问</span>
             </div>
             <div class="feature-item">
-              <el-icon><Check /></el-icon>
+              <el-icon>
+                <Check />
+              </el-icon>
               <span>下载课程源码</span>
             </div>
             <div class="feature-item">
-              <el-icon><Check /></el-icon>
+              <el-icon>
+                <Check />
+              </el-icon>
               <span>专属交流群</span>
             </div>
             <div class="feature-item">
-              <el-icon><Check /></el-icon>
+              <el-icon>
+                <Check />
+              </el-icon>
               <span>每周更新内容</span>
             </div>
           </div>
@@ -82,19 +96,27 @@
         <div class="card-content">
           <div class="features">
             <div class="feature-item">
-              <el-icon><Check /></el-icon>
+              <el-icon>
+                <Check />
+              </el-icon>
               <span>终身无限制访问</span>
             </div>
             <div class="feature-item">
-              <el-icon><Check /></el-icon>
+              <el-icon>
+                <Check />
+              </el-icon>
               <span>所有月度会员特权</span>
             </div>
             <div class="feature-item">
-              <el-icon><Check /></el-icon>
+              <el-icon>
+                <Check />
+              </el-icon>
               <span>优先体验新功能</span>
             </div>
             <div class="feature-item">
-              <el-icon><Check /></el-icon>
+              <el-icon>
+                <Check />
+              </el-icon>
               <span>专属技术支持</span>
             </div>
           </div>
@@ -102,11 +124,92 @@
         </div>
       </el-card>
     </div>
+
+    <div class="plans-feature" style="margin-top: 30px;">
+      <el-card class="info-card">
+        <h3>30天退款保证</h3>
+        <p>如果您对服务不满意,我们提供30天无条件退款</p>
+      </el-card>
+      <el-card class="info-card">
+        <h3>7x24小时支持</h3>
+        <p>我们的技术支持团队随时为您服务</p>
+      </el-card>
+      <el-card class="info-card">
+        <h3>安全支付</h3>
+        <p>使用业内领先的安全支付系统，保护您的资金安全</p>
+      </el-card>
+    </div>
+
+    <el-card style="margin-top: 20px; width: 90%; margin-left: 5%;">
+    <el-label class="centered-label">Q&A</el-label>
+    <!-- <el-divider /> -->
+    <div class="demo-collapse" style="margin-top: 30px;">
+    <el-collapse accordion>
+      <el-collapse-item name="1">
+        <template #title>
+          Consistency<el-icon class="header-icon">
+            <info-filled />
+          </el-icon>
+        </template>
+        <div>
+          Consistent with real life: in line with the process and logic of real
+          life, and comply with languages and habits that the users are used to;
+        </div>
+        <div>
+          Consistent within interface: all elements should be consistent, such
+          as: design style, icons and texts, position of elements, etc.
+        </div>
+      </el-collapse-item>
+      <el-collapse-item title="Feedback" name="2">
+        <div>
+          Operation feedback: enable the users to clearly perceive their
+          operations by style updates and interactive effects;
+        </div>
+        <div>
+          Visual feedback: reflect current state by updating or rearranging
+          elements of the page.
+        </div>
+      </el-collapse-item>
+      <el-collapse-item title="Efficiency" name="3">
+        <div>
+          Simplify the process: keep operating process simple and intuitive;
+        </div>
+        <div>
+          Definite and clear: enunciate your intentions clearly so that the
+          users can quickly understand and make decisions;
+        </div>
+        <div>
+          Easy to identify: the interface should be straightforward, which helps
+          the users to identify and frees them from memorizing and recalling.
+        </div>
+      </el-collapse-item>
+      <el-collapse-item title="Controllability" name="4">
+        <div>
+          Decision making: giving advices about operations is acceptable, but do
+          not make decisions for the users;
+        </div>
+        <div>
+          Controlled consequences: users should be granted the freedom to
+          operate, including canceling, aborting or terminating current
+          operation.
+        </div>
+      </el-collapse-item>
+    </el-collapse>
   </div>
+
+  </el-card>
+
+
+  </div>
+
+  
+  
+
+
 </template>
 
 <script setup lang="ts" name="Profile">
-import { Check } from '@element-plus/icons-vue'
+import { Check,InfoFilled } from '@element-plus/icons-vue'
 
 </script>
 
@@ -146,7 +249,7 @@ import { Check } from '@element-plus/icons-vue'
     border-radius: 12px;
     transition: all 0.3s ease;
     position: relative;
-    
+
     &:hover {
       transform: translateY(-5px);
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
@@ -243,6 +346,53 @@ import { Check } from '@element-plus/icons-vue'
   }
 }
 
+.plans-feature {
+    padding: 0 20px;
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    .info-card {
+      flex: 1;
+      max-width: 300px;
+      text-align: center;
+      padding: 20px;
+      
+      h3 {
+        color: #2c3e50;
+        margin-bottom: 10px;
+      }
+      
+      p {
+        color: #606266;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+    }
+
+}
+
+.centered-label {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+// 在响应式部分添加
+@media screen and (max-width: 768px) {
+  .plans-feature {
+    flex-direction: column;
+    align-items: center;
+    
+      .info-card {
+        width: 100%;
+      }
+  }
+}
+
 // 响应式适配
 @media screen and (max-width: 768px) {
   .plans-container {
@@ -272,4 +422,4 @@ import { Check } from '@element-plus/icons-vue'
     }
   }
 }
-</style> 
+</style>
