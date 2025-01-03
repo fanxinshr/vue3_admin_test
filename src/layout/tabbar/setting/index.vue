@@ -14,7 +14,8 @@
         </span>
         <template #dropdown>
             <el-dropdown-menu>
-                <el-dropdown-item>我的主页</el-dropdown-item>
+                <el-dropdown-item @click="goHome">我的主页</el-dropdown-item>
+                <el-dropdown-item @click="goPlans">会员计划</el-dropdown-item>
                 <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
             </el-dropdown-menu>
         </template>
@@ -73,8 +74,20 @@ const logout =async () => {
     await userStore.useLogout()
     // 跳转到登录页面
     $router.push({path:'/login',query:{ redirect:$route.path }})
-
 }
+
+// 跳转到我的主页
+const goHome = () => {
+    // $router.push({path:'/home'})
+    // 跳转到个人主页
+    $router.push({path:'/profile/profile'})
+}
+
+// 跳转到会员计划
+const goPlans = () => {
+    $router.push({path:'/profile/plans'})
+}
+
 </script>
 
 <style lang="scss" scoped></style>

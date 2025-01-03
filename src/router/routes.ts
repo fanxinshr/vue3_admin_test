@@ -240,6 +240,49 @@ export const constantRoute = [
         ]
     },
     {
+        path: '/profile',
+        component: () => import('@/layout/index.vue'),
+        name: 'profile',
+        meta: {
+            title: '个人主页',
+            hidden: true,
+            icon:"User",
+        },
+        redirect: "/profile/profile",
+        children:[
+            {
+                path:'/profile/profile',
+                component:()=>import('@/views/profile/profile/index.vue'),
+                name:"profilepage",
+                meta:{
+                    title:'个人主页', //菜单标题
+                    hidden:true,
+                    icon:"User",
+                }
+            },
+            {
+                path:'/profile/plans',
+                component:()=>import('@/views/profile/plans/index.vue'),
+                name:"plans",
+                meta:{
+                    title:'会员计划', //菜单标题
+                    hidden:false,
+                    icon:"User",
+                }
+            },
+            {
+                path:'/profile/task',
+                component:()=>import('@/views/profile/task/index.vue'),
+                name:"task",
+                meta:{
+                    title:'任务管理', //菜单标题
+                    hidden:false,
+                    icon:"User",
+                }
+            },
+        ]
+    },
+    {
         // 任意路由
         path:'/:pathMatch(.*)*',
         redirect:'404',

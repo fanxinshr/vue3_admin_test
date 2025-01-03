@@ -124,7 +124,7 @@ let $route = useRoute()
     height: calc(100vh - 60px);
     left: 260px;
     top: 60px;
-    background-color: f2f4f6;
+    background-color: #f2f4f6;
     padding: 20px;
     overflow: auto;
     transition: all 0.3s; //添加过渡动画
